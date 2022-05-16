@@ -7,16 +7,16 @@ import Layout from '@/components/Layouts'
 import PageHeader from '@/components/Layouts/PageHeader'
 import Wrapper from '@/components/Layouts/Wrapper'
 import CardList from '@/components/molecules/CardList'
-import { allworks } from '@/common/lib/works'
+import { works } from '@/common/lib/works'
 import Work from '@/common/types/works';
 
 
 type Props = {
-  allworks: Work[]
+  works: Work[]
   pageTitle: string;
 };
 
-const Works = ({ allworks }: Props) => {
+const Works = ({ works }: Props) => {
   const title = 'Works';
   const router = useRouter();
   if (router.isFallback) {
@@ -30,18 +30,17 @@ const Works = ({ allworks }: Props) => {
         <Wrapper >
           <PageHeader
             pageTitle={title} />
-          <CardList works={allworks} />
+          <CardList works={works} />
         </Wrapper>
       </Layout>
     </>
   )
 }
 
-
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
-      allworks
+      works
     },
   };
 }

@@ -1,4 +1,4 @@
-export const allworks:
+export const works:
   { [key: string]: string }[] = [
     { "title": "株式会社fRom EAST", "image": "/assets/works/fromeast000.jpeg", "description": "制作・運用保守" },
     { "title": "fRom EAST Shop", "image": "https://placehold.jp/400x300.png", "description": "構築・運営" },

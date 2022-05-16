@@ -27,11 +27,11 @@ const PostPreview: React.FC<Props> = ({
       <div className= "mb-5" >
         <CoverImage slug={ slug } title = { title } src = { coverImage } />
       </div>
-      <h3 className = "text-2xl mb-3 leading-snug" >
+      <h4 className = "text-2xl mb-3 leading-snug font-bold" >
         <Link as={ `/posts/${slug}` } href = "/posts/[slug]" >
           <a className="hover:underline" > { title } </a>
         </Link>
-      </h3>
+      </h4>
       <div className = "text-lg mb-4" >
         <DateFormatter dateString={ date } />
       </div>

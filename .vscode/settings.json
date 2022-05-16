@@ -1,0 +1,5 @@
+{
+  "prettier.configPath": "./prettier.config.js",
+  "prettier.htmlWhitespaceSensitivity": "strict",
+  "prettier.withNodeModules": true
+}

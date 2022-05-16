@@ -36,13 +36,25 @@
     @apply bg-dbdad8 text-455b78
   }
   .heading {
-    @apply mb-8 text-5xl md:text-6xl md:mt-32 font-bold tracking-tighter leading-tight capitalize
+    @apply mb-8 text-4xl md:text-6xl mt-16 md:mt-32 font-bold tracking-tighter leading-tight capitalize
   }
   .aspect9to16 {
     @include aspect-ratio(9,16);
   }
   .aspect-square {
     @include aspect-ratio(1,1);
+  }
+  .scroll-x {
+    @apply flex overflow-x-scroll mr-[-1.25rem]
+  }
+  .scroll-x > :not(:first-child) {
+    @apply ml-4
+  }
+  .scroll-x > :last-child {
+    @apply mr-[1.25rem]
+  }
+  .scroll-x__item {
+    @apply flex-[0_0_auto]
   }
 }
 

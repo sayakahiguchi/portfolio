@@ -50,12 +50,10 @@ export default WorkType
 今回はCardListの中にCardコンポーネントを入れる。
 新しくworkというPropsを作り、Array.prototype.map()で新しい配列を入れる。
 
-```
+```TypeScript:CardList.tsx
 import React from 'react'
 import Work from '@/common/types/works'
-import { works } from '@/common/lib/works'
 import Card from '@/components/molecules/Card'
-import { GetStaticProps } from 'next';
 
 type Props = {
   work: Work[]
@@ -63,7 +61,7 @@ type Props = {
 
 const CardList: React.FC<Props> = ({ work }: Props) => {
   return (
-    <ul className = 'grid md:grid-cols-4 gap-6 ' >
+    <ul>
     {
       works.map(work => (
         <Card
@@ -78,4 +76,41 @@ const CardList: React.FC<Props> = ({ work }: Props) => {
 }
 
 export default CardList
+```
+
+## Page
+
+typeで型を宣言し、getStaticPropsでpropsに連想配列を渡す。
+コンポーネントのworksにworksを渡す。
+
+```TypeScript:index.tsx
+import React from 'react';
+...
+import { works } from '@/common/lib/works'
+import Work from '@/common/types/works';
+type Props = {
+  allworks: Work[]
+};
+
+const Index = ({ works }: Props) => {
+  ...
+  return (
+    <>
+    ...
+      <CardList works={ works } />
+    ...
+    </>
+  )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {
+      works
+    },
+  };
+}
+
+export default Index
+
 ```

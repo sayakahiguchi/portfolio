@@ -22,52 +22,52 @@ const Index = ({ allPosts }: Props) => {
   const morePosts = allPosts.slice(0)
   return (
     <>
-      <Meta/>
+      <Meta />
       <Layout >
-        <Header/>
+        <Header />
         <Wrapper >
-          <Intro/>
+          <Intro />
           {heroPost && (
-              <HeroPost
-                title={ heroPost.title }
-                coverImage = { heroPost.coverImage }
-                date = { heroPost.date }
-                slug = { heroPost.slug }
-                excerpt = { heroPost.excerpt }
-              />
-            )}
+            <HeroPost
+              title={heroPost.title}
+              coverImage={heroPost.coverImage}
+              date={heroPost.date}
+              slug={heroPost.slug}
+              excerpt={heroPost.excerpt}
+            />
+          )}
           <section>
             <h3 className="font-heading heading" > Skills </h3>
             <p> 学習中のものも含みます。</p>
-            <ul className='flex justify-around flex-wrap	mt-6' >
+            <ul className='scroll-x lg:justify-around lg:flex-wrap	mt-6' >
               {
                 skills.map((skill) => (
-                  <li>
-                  <div className= 'h-20 w-full' >
-                  <img
-                      className='h-full object-contain object-center'
-                      src = { skill.media }
-                      alt = { skill.name } />
-                  </div>
+                  <li className='scroll-x__item'>
+                    <div className='h-10 lg:h-20 w-full' >
+                      <img
+                        className='h-full object-contain object-center'
+                        src={skill.media}
+                        alt={skill.name} />
+                    </div>
                   </li>
                 ))
               }
             </ul>
           </section>
           <section>
-            <h3 className = 'font-heading heading' > tools / apps / CMS / platforms </h3>
-            <ul className = 'list-disc	pl-4' >
+            <h3 className='font-heading heading' > tools / apps / CMS / platforms </h3>
+            <ul className='list-disc	pl-4' >
               {
                 tools.map((tool) => (
                   <li>
-                  { tool }
+                    {tool}
                   </li>
                 ))
               }
             </ul>
           </section>
           {
-            morePosts.length > 0 && <MoreStories posts={ morePosts } />
+            morePosts.length > 0 && <MoreStories posts={morePosts} />
           }
         </Wrapper>
       </Layout>

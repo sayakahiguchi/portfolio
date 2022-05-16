@@ -24,33 +24,33 @@ type Props = {
 const Post = ({ post, morePosts, preview }: Props) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={ 404 } />
+    return <ErrorPage statusCode={404} />
   }
   return (
-    <Layout preview={ preview } >
-    <Header/>
-    <Wrapper>
-    {
-      router.isFallback ? (
-        <PostTitle>Loading…</PostTitle>
-        ) : (
-        <>
-          <Meta
-            pageTitle = { post.title }
-            pageImg = { post.ogImage.url } />
-          <PostHeader
-            title={ post.title }
-            coverImage = { post.coverImage }
-            date = { post.date }
-            author = { post.author }
-          />
-          <Container>
-            <PostBody content={ post.content } />
-          </Container>
-        </>
-        )}
-    </Wrapper>
-  </Layout>
+    <Layout preview={preview} >
+      <Header />
+      <Wrapper>
+        {
+          router.isFallback ? (
+            <PostTitle>Loading…</PostTitle>
+          ) : (
+            <>
+              <Meta
+                pageTitle={post.title}
+                pageImg={post.ogImage.url} />
+              <PostHeader
+                title={post.title}
+                coverImage={post.coverImage}
+                date={post.date}
+                author={post.author}
+              />
+              <Container>
+                <PostBody content={post.content} />
+              </Container>
+            </>
+          )}
+      </Wrapper>
+    </Layout>
   )
 }
 
