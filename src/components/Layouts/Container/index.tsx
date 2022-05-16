@@ -1,12 +1,14 @@
 import * as React from "react";
 
 type Props = {
-  children?: ReactNode
+  children?: React.ReactNode
 }
 
-const Container: FunctionComponent = ({ children }: Props) => {
+const Container: React.FC<Props> = ({ children }: Props) => {
   return (
-    <section className= "text-base max-w-prose mx-auto px-5 " > { children } < /section>
+    <section className= "text-base max-w-prose mx-auto px-5 " >
+      { children }
+    </section>
   )
 }
 

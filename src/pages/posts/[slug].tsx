@@ -27,30 +27,30 @@ const Post = ({ post, morePosts, preview }: Props) => {
     return <ErrorPage statusCode={ 404 } />
   }
   return (
-    <Layout preview= { preview } >
-    <Header />
-    < Wrapper >
+    <Layout preview={ preview } >
+    <Header/>
+    <Wrapper>
     {
       router.isFallback ? (
-        <PostTitle>Loading…< /PostTitle>
+        <PostTitle>Loading…</PostTitle>
         ) : (
-  <>
-  <Meta 
+        <>
+          <Meta
             pageTitle = { post.title }
-pageImg = { post.ogImage.url } />
-  <PostHeader
+            pageImg = { post.ogImage.url } />
+          <PostHeader
             title={ post.title }
-coverImage = { post.coverImage }
-date = { post.date }
-author = { post.author }
-  />
-  <Container className="mb-32" >
-    <PostBody content={ post.content } />
-      < /Container>
-      < />
+            coverImage = { post.coverImage }
+            date = { post.date }
+            author = { post.author }
+          />
+          <Container>
+            <PostBody content={ post.content } />
+          </Container>
+        </>
         )}
-</Wrapper>
-  < /Layout>
+    </Wrapper>
+  </Layout>
   )
 }
 

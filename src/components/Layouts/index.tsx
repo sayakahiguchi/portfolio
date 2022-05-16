@@ -3,20 +3,22 @@ import Meta from '@/components/Layouts/Meta'
 import Footer from '@/components/Layouts/Footer'
 import { CMS_NAME } from '@/common/lib/constants'
 import { Html } from 'next/document'
+import React from 'react'
 
 type Props = {
   children: React.ReactNode
+  preview?: boolean
 }
 
-const Layout = ({ children }: Props) => {
+const Layout: React.FC<Props> = ({ children,preview }: Props) => {
   return (
     <>
-    <main className = "min-h-screen" >
-    <article>
-    { children }
-    < /article>
-    < /main>
-    < Footer />
+      <main className="min-h-screen" >
+        <article>
+          { children }
+        </article>
+      </main>
+      <Footer/>
     </>
   )
 }

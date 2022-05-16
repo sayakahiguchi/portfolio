@@ -1,8 +1,14 @@
-const Paragraph = ({ children }) => {
+import React from "react";
+
+interface Props {
+  children?: React.ReactNode;
+}
+
+const Paragraph: React.FC<Props> = ({ children }: Props) => {
   return (
     <p className= "text-base" >
     { children }
-    < /p>
+    </p>
   )
 }
-export default Paragraph;
+export default Paragraph

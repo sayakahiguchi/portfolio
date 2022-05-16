@@ -9,7 +9,7 @@
   ],
   "plugins": [
     "tailwindcss"
-  ]
+  ],
   "rules": {
     "import/order": [
       "error",

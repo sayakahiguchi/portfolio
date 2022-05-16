@@ -4,12 +4,12 @@ type Props = {
   picture: string;
 }
 
-const Icon: React.FC = ({ name, picture }: Props) => {
+const Icon: React.FC<Props> = ({ name, picture }: Props) => {
   return (
     <div className= "flex items-center" >
-    <img src={ picture } className = "w-16 h-16 mr-4" alt = { name } />
-      <p className="text-xl font-bold" > { name } < /p>
-        < /div>
+      <img src={ picture } className = "w-16 h-16 mr-4" alt = { name } / >
+      <p className="text-xl font-bold" > { name } </p>
+    </div>
   )
 }
 

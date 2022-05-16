@@ -4,15 +4,15 @@ import classNames from 'classnames';
 
 interface Props {
   destination: string;
-  pagetitle: string;
+  pageTitle: string;
 }
 
-const NavItem = ( { destination, pageTitle } ) => {
+const NavItem: React.FC<Props> = ({ destination, pageTitle }: Props) => {
   return (
-    <li className='px-2 font-bold'>
+    <li className= 'px-2 font-bold' >
       <Link href={ destination }>
         { pageTitle }
-      </ Link>
+      </Link>
     </li>
   )
 }

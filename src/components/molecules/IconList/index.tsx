@@ -3,20 +3,20 @@ import { skills } from '@/common/lib/skills'
 import { GetStaticProps } from 'next';
 import Icon from '@/components/atoms/Icon';
 
-const IconList: React.FC = () => {
+const IconList= () => {
   return (
-    <ul className = 'grid md:grid-cols-4 gap-6 ' >
+    <ul className='grid md:grid-cols-4 gap-6' >
     {
       skills.map((skill) => (
         <li>
-        <Icon
-        name = { skill.name }
-        picture = { skill.media }
-        />
+          <Icon
+          name = { skill.name }
+          picture = { skill.media }
+          />
         </li>
       ))
     }
-    < /ul>
+    </ul>
   )
 }
 

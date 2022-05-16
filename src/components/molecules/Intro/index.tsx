@@ -3,10 +3,10 @@ import { CMS_NAME } from '@/common/lib/constants'
 const Intro = () => {
   return (
     <section className= 'flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12' >
-    <h2 className='text-5xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8' >
-      portfolio
-      < /h2>
-      < /section>
+      <h2 className='text-5xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8' >
+        { CMS_NAME }
+      </h2>
+    </section>
   )
 }
 
