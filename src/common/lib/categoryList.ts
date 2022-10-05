@@ -1,5 +1,10 @@
 export const categoryList:
-  { [key: string]: number | string | string[] }[] = [
+  {
+    index: number;
+    id: string;
+    name: string;
+    children?: string[]
+  }[] = [
     { index: 1, id: '1', "name": "Web", 'children': ['11', '12', '13', '14', '15'] },
     { index: 2, id: '2', "name": "デザイン", 'children': ['21', '22', '23'] },
     { index: 3, id: '3', "name": "その他" },

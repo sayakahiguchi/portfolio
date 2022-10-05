@@ -1,7 +1,6 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 import * as VEX from "@vanilla-extract/recipes";
 import { vars } from '@/styles/vars/var.css';
-import TagIcon from '@assets/Icon/tag.svg'
 import { hexToRGB } from "@/styles/mixin/hexToRGB";
 
 export const modalStyles = {
@@ -59,7 +58,7 @@ export const modalStyles = {
   }),
   categories: style({
     display: 'inline-flex',
-    listStyle: `url("${TagIcon.src}") inside`,
+    listStyle: `disc inside`,
     paddingLeft: 0,
     order: 4,
     '@media': {

@@ -51,7 +51,6 @@ const Index: NextPage<Props> = ({ allPosts, works }: Props) => {
                 element="ul"
                 display="flex"
                 justifyContent="spaceEvenly"
-                x
                 direction={windowWidth > width_large ? 'row' : 'column'}
               >
                 <Grid

@@ -7,12 +7,12 @@ type Props = {
   value: string
   id: string | undefined
   checked: boolean
-  key: string | number
-  onChange: () => void
+  key?: string | number
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   className?: string
 }
 
-const Input: React.FC<Props> = ({
+const Inputs: React.FC<Props> = ({
   type,
   name,
   value,
@@ -36,4 +36,4 @@ const Input: React.FC<Props> = ({
   )
 }
 
-export default Input
+export default Inputs

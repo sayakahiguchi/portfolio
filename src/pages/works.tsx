@@ -23,17 +23,17 @@ const Works = ({ works }: Props) => {
   }
   return (
     <>
-    <Meta pageTitle= { title } />
-    <Layout>
-    <Header />
-    < article >
-    <h2>製作実績 < /h2>
-    < Wrapper >
-    <CardList works={ works } />
-      < /Wrapper>
-      < /article>
-      < /Layout>
-      < />
+      <Meta pageTitle={title} />
+      <Layout>
+        <Header />
+        <article>
+          <h2>製作実績 </h2>
+          <Wrapper>
+            <CardList works={works} />
+          </Wrapper>
+        </article>
+      </Layout>
+    </>
   )
 }
 

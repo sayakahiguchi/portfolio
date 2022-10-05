@@ -6,7 +6,7 @@ type Props = {
   text: string
 }
 
-const Label: React.FC<Props> = ({ htmlFor, text }: Props) => {
+const Labels: React.FC<Props> = ({ htmlFor, text }: Props) => {
   return (
     <label className={LabelStyle} htmlFor={htmlFor}>
       {text}
@@ -14,4 +14,4 @@ const Label: React.FC<Props> = ({ htmlFor, text }: Props) => {
   )
 }
 
-export default Label
+export default Labels

@@ -1,17 +1,22 @@
 import React from 'react'
 import FilterFormStyles from './FilterForm.css'
-import Input from '@/components/atoms/Input'
-import Label from '@/components/atoms/label'
+import Inputs from '@/components/atoms/Inputs'
+import Labels from '@/components/atoms/Labels'
 import Icon from '@/components/atoms/Icon'
 import { Filter } from '@/components/atoms/Icons'
 import Grid from '@/components/molecules/Grid'
 
 type Props = {
   children?: React.ReactNode
-  array: string[] | number[] | { [key: string | number]: any }
+  array: {
+    index: number
+    id: string
+    name: string
+    children?: string[] | undefined
+  }[]
   filters: any
   target: string
-  onFilterChange: (event: any) => void
+  onFilterChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const FilterForm: React.FC<Props> = ({
@@ -39,15 +44,15 @@ const FilterForm: React.FC<Props> = ({
                 }
                 key={currentValue.index}
               >
-                <Input
+                <Inputs
                   type="checkbox"
                   name="categories"
                   value={currentValue.id}
                   id={currentValue.id}
                   onChange={onFilterChange}
-                  checked={`${filters.has(currentValue.id)}`}
+                  checked={filters.has(currentValue.id)}
                 />
-                <Label htmlFor={currentValue.id} text={currentValue[target]} />
+                <Labels htmlFor={currentValue.id} text={currentValue.name} />
               </div>
             )
           })}

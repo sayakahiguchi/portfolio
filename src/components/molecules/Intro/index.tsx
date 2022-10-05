@@ -3,7 +3,6 @@ import React from 'react'
 import { introStyle } from './Intro.css'
 import Paragraph from '@/components/atoms/Paragraph'
 import Blob from '@/components/atoms/Blob'
-import Blob2 from '@/components/atoms/Blob2'
 
 const Intro = () => {
   return (
