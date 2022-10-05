@@ -1,31 +1,30 @@
-import React from 'react'
-import cn from 'classnames'
+import Image from 'next/image'
 import Link from 'next/link'
+import * as React from 'react'
+import { coverImageStyles } from './CoverImage.css'
 
 type Props = {
   title?: string
-  src?: string
+  src: string
   slug?: string
 }
 
 const CoverImage: React.FC<Props> = ({ title, src, slug }: Props) => {
-  const image = (
-    <img
+  const image: JSX.Element = (
+    <Image
+      className={coverImageStyles.content}
       src={src}
       alt={`Cover Image for ${title}`}
-      className={cn(
-        'h-full max-h-80 w-full object-scale-down object-center	 drop-shadow-sm',
-        {
-          'transition-shadow duration-200 hover:shadow-lg': slug,
-        }
-      )}
+      objectFit="cover"
+      objectPosition="center"
+      layout="fill"
     />
   )
   return (
-    <div className="sm:mx-0">
+    <div className={coverImageStyles.wrapper}>
       {slug ? (
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <a aria-label={title}>{image}</a>
+        <Link as={`/posts/${slug}`} href={`/posts/${slug}`}>
+          <a aria-label={title}> {image} </a>
         </Link>
       ) : (
         image

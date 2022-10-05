@@ -1,11 +1,26 @@
-import { CMS_NAME } from '@/common/lib/constants'
+import Image from 'next/image'
+import React from 'react'
+import { introStyle } from './Intro.css'
+import Paragraph from '@/components/atoms/Paragraph'
+import Blob from '@/components/atoms/Blob'
+import Blob2 from '@/components/atoms/Blob2'
 
 const Intro = () => {
   return (
-    <section className= 'flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12' >
-      <h2 className='text-5xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8' >
-      portfolio
-      </h2>
+    <section className={introStyle.container}>
+      <div className={introStyle.description}>
+        <h2 className={introStyle.title}> Nice to meet you. </h2>
+        <Paragraph>
+          コーディング、デザインを主に活動しているヒグチ
+          サヤカのポートフォリオです。
+          <br />
+          designer and front - end developper.You can know about me and see my
+          works and blog here:)
+        </Paragraph>
+      </div>
+      <div className={introStyle.background}>
+        <Blob />
+      </div>
     </section>
   )
 }

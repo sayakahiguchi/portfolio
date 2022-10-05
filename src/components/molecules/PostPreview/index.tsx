@@ -1,16 +1,17 @@
-import React from "react"
-import Avatar from '@/components/atoms/Avatar'
-import DateFormatter from '@/components/functional/date-formatter'
-import CoverImage from '@/components/atoms/CoverImage'
 import Link from 'next/link'
+import * as React from 'react'
+import { postPreview } from './PostPreview.css'
 import Author from '@/common/types/author'
+import Avatar from '@/components/atoms/Avatar'
+import CoverImage from '@/components/atoms/CoverImage'
+import DateFormatter from '@/components/functional/date-formatter'
 
 type Props = {
   title: string
   coverImage: string
   date: string
-  excerpt: string
-  author: Author
+  excerpt?: string
+  author?: Author
   slug: string
 }
 
@@ -23,19 +24,21 @@ const PostPreview: React.FC<Props> = ({
   slug,
 }: Props) => {
   return (
-    <div>
-      <div className= "mb-5" >
-        <CoverImage slug={ slug } title = { title } src = { coverImage } />
-      </div>
-      <h4 className = "text-2xl mb-3 leading-snug font-bold" >
-        <Link as={ `/posts/${slug}` } href = "/posts/[slug]" >
-          <a className="hover:underline" > { title } </a>
+    <div className={postPreview.wrapper}>
+      <h4 className={postPreview.title}>
+        <Link as={`/posts/${slug}`} href={`/posts/${slug}`}>
+          <a className="hover:underline">{title}</a>
         </Link>
       </h4>
-      <div className = "text-lg mb-4" >
-        <DateFormatter dateString={ date } />
+      <p className={postPreview.date}>
+        <small>
+          <DateFormatter dateString={date} />
+        </small>
+      </p>
+      {excerpt ? <p className={postPreview.excerpt}> {excerpt} </p> : ``}
+      <div className={postPreview.media}>
+        <CoverImage slug={slug} title={title} src={coverImage} />
       </div>
-      <p className = "text-lg leading-relaxed mb-4" > { excerpt } </p>
     </div>
   )
 }

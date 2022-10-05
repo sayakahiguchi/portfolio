@@ -1,25 +1,71 @@
-import React from 'react'
+import React, { useState, useCallback, useTransition, ChangeEvent } from 'react'
+import { CardListStyle } from './CardList.css'
 import Work from '@/common/types/works'
+import Categories from '@/common/types/categories'
 import Card from '@/components/molecules/Card'
+import FilterForm from '@/components/molecules/FilterForm'
+import { categoryList } from '@/common/lib/categoryList'
 
 type Props = {
   works: Work[]
+  sliced?: string
 }
 
-const CardList: React.FC<Props> = ({ works }: Props) => {
+const CardList: React.FC<Props> = ({ works, sliced }: Props) => {
+  const [state, setState] = useState({
+    workList: works,
+    filters: new Set(),
+  })
+  const [isPending, startTransition] = useTransition()
+
+  const handleFilterChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setState((previousState) => {
+        let filters = new Set(previousState.filters)
+        let workList = works
+
+        if (event.target.checked) {
+          filters.add(event.target.value)
+        } else {
+          filters.delete(event.target.value)
+        }
+
+        startTransition(() => {
+          if (filters.size) {
+            workList = workList.filter((work) => {
+              return work.categories.some((category) => {
+                return filters.has(category)
+              })
+            })
+          }
+        })
+
+        return {
+          filters,
+          workList,
+        }
+      })
+    },
+    [works, setState]
+  )
+
   return (
     <>
-      <ul className='grid md:grid-cols-4 gap-x-6 gap-y-8 md:gap-y-10 items-stretch'>
-        {
-          works.map((work) => (
-            <Card
-              title={work.title}
-              media={work.image}
-              description={work.description}
-            />
-          ))
-        }
-      </ul>
+      <FilterForm
+        array={categoryList.filter((item) => item.index <= 3)}
+        target="name"
+        filters={state.filters}
+        onFilterChange={handleFilterChange}
+      />
+      {isPending ? (
+        <p> Loading...</p>
+      ) : (
+        <ul className={CardListStyle}>
+          {state.workList.map((work) => (
+            <Card card={work} key={work.index} />
+          ))}
+        </ul>
+      )}
     </>
   )
 }

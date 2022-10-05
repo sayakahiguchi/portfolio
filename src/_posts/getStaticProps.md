@@ -1,5 +1,5 @@
 ---
-title: 'getStaticPropsで連想配列を出力する'
+title: 'getStaticPropsで連想配列を出力する備忘録'
 excerpt: ''
 coverImage: '/assets/blog/preview/cover.jpg'
 date: '2022-05-09'
@@ -23,19 +23,19 @@ getStaticPropsを利用して連想配列を出力する。
 "react-router-dom": "^6.3.0"
 ```
 
-## 配列
+## 配列を作る
 配列worksを宣言。
 多次元配列は次元の数だけブラケットを置くことによってデータ型を指定する。
 ```TypeScript: @/common/lib/works.ts
 export const works:
 { [key: string]: string }[] = [
-  { "title": "hoge", "description": "hogehoge" },
-  { "title": "piyo", "description": "piyopiyo" },
-  { "title": "dummy", "description": "dummydummy" },
+  { "title": "hoge", description: "hogehoge" },
+  { "title": "piyo", description: "piyopiyo" },
+  { "title": "dummy", description: "dummydummy" },
 ]
 ```
 
-## Type
+## Type型を宣言する
 type型を宣言
 ```TypeScript:src/common/types/works.ts
 type WorkType = {
@@ -46,7 +46,7 @@ type WorkType = {
 
 export default WorkType
 ```
-## Component
+## Componentを作る
 今回はCardListの中にCardコンポーネントを入れる。
 新しくworkというPropsを作り、Array.prototype.map()で新しい配列を入れる。
 
@@ -78,7 +78,7 @@ const CardList: React.FC<Props> = ({ work }: Props) => {
 export default CardList
 ```
 
-## Page
+## Page/index
 
 typeで型を宣言し、getStaticPropsでpropsに連想配列を渡す。
 コンポーネントのworksにworksを渡す。

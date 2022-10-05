@@ -1,14 +1,35 @@
-import * as React from "react";
+import * as React from 'react'
+import {
+  containerStyle,
+  containerRecipie,
+  containerVariants,
+} from './index.css'
 
 type Props = {
   children?: React.ReactNode
-}
+  title?: string
+  marginMediumVw?: string
+  id?: string
+  className?: string
+} & containerVariants
 
-const Container: React.FC<Props> = ({ children }: Props) => {
+const Container: React.FC<Props> = ({
+  children,
+  title,
+  marginMediumVw,
+  id,
+  className,
+}: Props) => {
   return (
-    <section className= "text-base max-w-prose mx-auto px-5 " >
-      { children }
-    </section>
+    <div
+      className={`${containerRecipie({
+        marginMediumVw,
+      })} ${className || ''}`}
+      id={id}
+    >
+      {title ? <h3 className={containerStyle.title}>{title}</h3> : ''}
+      {children}
+    </div>
   )
 }
 

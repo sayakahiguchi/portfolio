@@ -1,20 +1,15 @@
-import PostTitle from '@/components/atoms/PostTitle'
 import CoverImage from '@/components/atoms/CoverImage'
+import PostTitle from '@/components/atoms/PostTitle'
 
 interface Props {
-  pageTitle?: string;
-  pageImg?: string;
+  pageTitle?: string
+  pageImg: string
 }
 
-const PageHeader: React.FC<Props> = ({
-  pageTitle,
-  pageImg
-}: Props) => {
-  const imgUrl = pageImg
+const PageHeader: React.FC<Props> = ({ pageTitle, pageImg }: Props) => {
   return (
     <>
-      <PostTitle>{ pageTitle } </PostTitle>
-      <CoverImage title = { pageTitle } src = { imgUrl } />
+      <PostTitle>{pageTitle} </PostTitle>
     </>
   )
 }

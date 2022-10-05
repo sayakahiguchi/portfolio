@@ -1,9 +1,11 @@
-import React from "react"
 import Link from 'next/link'
-import Avatar from '@/components/atoms/Avatar'
-import DateFormatter from '@/components/functional/date-formatter'
-import CoverImage from '@/components/atoms/CoverImage'
+import * as React from 'react'
+import { heroPostStyles } from './HeroPost.css'
 import Author from '@/common/types/author'
+import Avatar from '@/components/atoms/Avatar'
+import Button from '@/components/atoms/Button'
+import CoverImage from '@/components/atoms/CoverImage'
+import DateFormatter from '@/components/functional/date-formatter'
 
 type Props = {
   title?: string
@@ -23,24 +25,21 @@ const HeroPost = ({
   slug,
 }: Props) => {
   return (
-    <section>
-      <div className= "mb-8 md:mb-16" >
-      </div>
-      <div className = "md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28" >
-        <div>
-          <h3 className="mb-4 text-4xl lg:text-5xl leading-tight" >
-            <Link as={ `/posts/${slug}` } href = "/posts/[slug]" >
-              <a className="hover:underline" >{ title }</a>
-            </Link>
-          </h3>
-          <p className = "text-lg leading-relaxed mb-4" >{ excerpt }</p>
-          <button className = "button" >
-            <Link as={ `/posts/${slug}` } href = "/posts/[slug]" >
-              <a>read more </a>
-            </Link>
-          </button>
-        </div>
-      </div>
+    <section className={heroPostStyles.container}>
+      <h3 className={heroPostStyles.title}>
+        <Link as={`/posts/${slug}`} href={`/posts/${slug}`}>
+          <a>{title}</a>
+        </Link>
+      </h3>
+      <p className={heroPostStyles.paragraph}>{excerpt}</p>
+      <Button
+        text="read more"
+        link={`/posts/${slug}`}
+        as={`/posts/${slug}`}
+        type="button"
+        display="block"
+        color="accent"
+      />
     </section>
   )
 }

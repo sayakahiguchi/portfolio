@@ -1,5 +1,5 @@
+import { postBodyStyle } from './PostBody.css'
 import markdownStyles from '@/components/Layouts/PostBody/markdown-styles.module.css'
-import Container from '@/components/Layouts/Container'
 
 type Props = {
   content: string
@@ -7,8 +7,12 @@ type Props = {
 
 const PostBody = ({ content }: Props) => {
   return (
-    <section className= { markdownStyles['markdown'] } dangerouslySetInnerHTML = {{ __html: content }
-} />
+    <div className={postBodyStyle.wrapper}>
+      <div
+        className={markdownStyles['markdown']}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+    </div>
   )
 }
 

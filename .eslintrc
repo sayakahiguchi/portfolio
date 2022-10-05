@@ -1,26 +1,14 @@
 {
-  "extends": [
-    "next",
-    "next/core-web-vitals",
-    "plugin:import/recommended",
-    "plugin:import/warnings",
-    "prettier",
-    "plugin:tailwindcss/recommended"
-  ],
-  "plugins": [
-    "tailwindcss"
-  ],
-  "rules": {
-    "import/order": [
-      "error",
-      {
-        "alphabetize": {
-          "order": "asc"
-        }
+  "extends": ["next", "next/core-web-vitals"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@/*", "./src/*"],
+          ["@assets/*", "./src/public/assets/*"]
+        ],
+        "extensions": [".ts", ".js", ".json"]
       }
-    ],
-    "tailwindcss/classnames-order": "warn",
-    "tailwindcss/no-custom-classname": "warn",
-    "tailwindcss/no-contradicting-classname": "error"
-  },
+    }
+  }
 }
