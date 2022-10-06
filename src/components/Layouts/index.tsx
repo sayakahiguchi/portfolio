@@ -12,10 +12,10 @@ type Props = {
 
 const Layout: React.FC<Props> = ({ children, preview }: Props) => {
   return (
-    <div>
-      <main className={mainStyle}> {children} </main>
+    <>
+      <main className={mainStyle}>{children}</main>
       <Footer />
-    </div>
+    </>
   )
 }
 

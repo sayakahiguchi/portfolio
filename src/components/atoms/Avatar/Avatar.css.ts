@@ -8,11 +8,10 @@ export const AvatarStyle = ({
     width: `calc((${vars.fontSizes.large} * ${vars.lineHeights.medium}) * 3)`,
   }),
   image: style({
-    clipPath: 'path(#blob)'
+    clipPath: 'url(#blob)',
   }),
   clip: style({
-    fill: 'inherit',
-    height: 'auto',
-    position: 'static'
+    height: 0,
+    width: 0,
   })
 })

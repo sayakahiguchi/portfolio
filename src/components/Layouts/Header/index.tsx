@@ -10,11 +10,11 @@ const Header = () => {
     <header className={headerStyles.container}>
       <h1 className={headerStyles.title}>
         <Link href="/">
-          <a> {CMS_NAME} </a>
+          <a>{CMS_NAME}</a>
         </Link>
       </h1>
       <Navigation />
-      <ThemeChanger/>
+      <ThemeChanger />
     </header>
   )
 }

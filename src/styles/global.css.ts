@@ -1,13 +1,13 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { vars } from '@/styles/vars/var.css'
 
-globalStyle('html, body', {
+globalStyle('body', {
   margin: 0,
   fontFamily: vars.fonts.body,
   fontSize: '100%',
   background: vars.colors.background,
   color: vars.colors.text,
-  minHeight: "100vh"
+  minHeight: "100vh",
 });
 
 globalStyle("*, *::before, *::after", {

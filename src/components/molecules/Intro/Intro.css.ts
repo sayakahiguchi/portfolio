@@ -31,13 +31,14 @@ export const introStyle = {
     transform: 'translateX(-100%)',
     width: '100%',
     height: '100vw',
-    zIndex: 0,
+    zIndex: -999,
     '@media': {
       'screen and (min-width: 1024px)': {
         height: '61.8vw',
         left: 0,
         transform: 'translate(0, -50%)',
-        top: '50%'
+        top: '50%',
+        width: '61.8vw'
       }
     }
   })

@@ -9,10 +9,13 @@ export const headerStyles = {
     gridTemplate: '"title themeChanger" "nav nav"',
     justifyContent: 'space-between',
     justifyItems: 'center',
-    mixBlendMode: 'color-burn',
     paddingLeft: vars.space.vw,
     paddingRight: vars.space.vw,
     zIndex: 999,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
     '@media': {
       'screen and (min-width: 768px)': {
         justifyItems: 'end',
@@ -26,5 +29,6 @@ export const headerStyles = {
     fontWeight: vars.fontWeight.bold,
     marginTop: 0,
     marginBottom: 0,
+    mixBlendMode: 'color-burn',
   })
 }
