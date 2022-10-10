@@ -23,11 +23,10 @@ const ThemeChanger = () => {
   useEffect(() => {
     setMounted(true)
     let currentTheme = window.localStorage.getItem('theme')
-    console.log(theme)
     if (currentTheme != null) {
       setTheme(currentTheme)
     }
-  }, [setMounted])
+  }, [setMounted, setTheme])
 
   const currentTheme = useMemo(() => {
     let object
