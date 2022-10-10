@@ -7,5 +7,15 @@ export const postHeaderStyle = {
     marginLeft: vars.space.vw,
     marginRight: vars.space.vw,
   }),
+  content: style({
+    left: '50%',
+    mixBlendMode: 'difference',
+    paddingLeft: vars.space.vw,
+    paddingRight: vars.space.vw,
+    position: 'absolute',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '100%',
+  })
 
 }

@@ -44,11 +44,18 @@ const Card: React.FC<Props> = ({ card }: Props) => {
         </Icon>
       </div>
       <ModalComponent>
-        <h3 className={modalStyles.title}>{card.title}</h3>
+        <h4 className={modalStyles.title}>{card.title}</h4>
         <div
           className={modalStyles.description}
           dangerouslySetInnerHTML={{ __html: card.description }}
         ></div>
+        {card.link ? (
+          <p className={modalStyles.link}>
+            <a href={card.link}>{card.title}</a>
+          </p>
+        ) : (
+          ''
+        )}
         <ul className={modalStyles.categories}>
           {card.categories.map((category, index) => {
             const category_id = category

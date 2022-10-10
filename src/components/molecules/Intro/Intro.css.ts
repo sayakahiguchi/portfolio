@@ -14,14 +14,13 @@ export const introStyle = {
     position: 'relative',
   }),
   title: style({
-    color: vars.colors.text,
     fontSize: vars.fontSizes.xxlarge,
     fontWeight: vars.fontWeight.bold,
     marginBottom: 0,
   }),
   description: style({
     alignSelf: 'flex-end',
-    mixBlendMode: 'color-burn',
+    mixBlendMode: 'difference',
     zIndex: 1
   }),
   background: style({

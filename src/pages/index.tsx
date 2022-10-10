@@ -1,6 +1,7 @@
-import type { NextPage } from 'next'
+import type { NextPageWithLayout } from './_app'
 import React from 'react'
 import { useWindowSize } from '@/common/utils/useWindowSize'
+import { useScroll } from '@/common/utils/useScroll'
 import { getAllPosts } from '@/common/lib/api'
 import { works } from '@/common/lib/works'
 import Post from '@/common/types/post'
@@ -20,13 +21,14 @@ import Grid from '@/components/molecules/Grid'
 import Profile from '@/components/molecules/Profile'
 import Intro from '@/components/molecules/Intro'
 import MoreStories from '@/components/molecules/MoreStories'
+
 type Props = {
   allPosts: Post[]
   works: Work[]
   target: Target[]
 }
 
-const Index: NextPage<Props> = ({ allPosts, works }: Props) => {
+const Index: NextPageWithLayout<Props> = ({ allPosts, works }: Props) => {
   const { windowHeight, windowWidth } = useWindowSize()
   const width_medium = 768,
     width_large = 1024,
@@ -36,70 +38,76 @@ const Index: NextPage<Props> = ({ allPosts, works }: Props) => {
   return (
     <>
       <Meta />
-      <Layout>
-        <Header />
-        <article>
-          <Intro />
-          <Wrapper title="works">
-            <Container id="works">
-              {works.length > 0 && <CardList works={works} />}
-            </Container>
-          </Wrapper>
-          <Wrapper title="what I can do">
-            <Container>
+      <Header />
+      <article>
+        <Intro />
+        <Wrapper title="works" id="works">
+          <Container>
+            {works.length > 0 && <CardList works={works} />}
+          </Container>
+        </Wrapper>
+        <Wrapper title="what I can do">
+          <Container>
+            <Grid
+              element="ul"
+              display="flex"
+              justifyContent="spaceEvenly"
+              direction={windowWidth > width_large ? 'row' : 'column'}
+            >
               <Grid
-                element="ul"
+                element="li"
+                alignItems="center"
+                basis="1/2"
                 display="flex"
-                justifyContent="spaceEvenly"
-                direction={windowWidth > width_large ? 'row' : 'column'}
+                direction="column"
+                justifyContent="center"
               >
-                <Grid
-                  element="li"
-                  alignItems="center"
-                  basis="1/2"
-                  display="flex"
-                  direction="column"
-                  justifyContent="center"
-                >
-                  <GridItem element="div" order={2}>
-                    <h4>Design</h4>
-                    <p>Web、バナー(サイト内・広告用)、ロゴ</p>
-                  </GridItem>
-                  <GridItem element="div" order={1}>
-                    <Icon element="div" svg src="/" size="xlarge">
-                      <Monitor />
-                    </Icon>
-                  </GridItem>
-                </Grid>
-                <Grid
-                  element="li"
-                  alignItems="center"
-                  basis="1/2"
-                  display="flex"
-                  direction="column"
-                  justifyContent="center"
-                >
-                  <GridItem element="div" order={2}>
-                    <h4>Web development</h4>
-                    <p>LP, WordPress, EC-CUBE, Shopify</p>
-                  </GridItem>
-                  <GridItem element="div" order={1}>
-                    <Icon element="div" svg src="/" size="xlarge">
-                      <Code />
-                    </Icon>
-                  </GridItem>
-                </Grid>
+                <GridItem element="div" order={2}>
+                  <h4>Design</h4>
+                  <p>Web、バナー(サイト内・広告用)、ロゴ</p>
+                </GridItem>
+                <GridItem element="div" order={1}>
+                  <Icon element="div" svg src="/" size="xlarge">
+                    <Monitor />
+                  </Icon>
+                </GridItem>
               </Grid>
-            </Container>
-          </Wrapper>
-          <Wrapper title="about me">
-            <Profile />
-          </Wrapper>
-          {morePosts.length > 0 && (
-            <MoreStories allPosts={allPosts} posts={morePosts} hero="about" />
-          )}
-        </article>
-      </Layout>
+              <Grid
+                element="li"
+                alignItems="center"
+                basis="1/2"
+                display="flex"
+                direction="column"
+                justifyContent="center"
+              >
+                <GridItem element="div" order={2}>
+                  <h4>Web development</h4>
+                  <p>LP, WordPress, EC-CUBE, Shopify</p>
+                </GridItem>
+                <GridItem element="div" order={1}>
+                  <Icon element="div" svg src="/" size="xlarge">
+                    <Code />
+                  </Icon>
+                </GridItem>
+              </Grid>
+            </Grid>
+          </Container>
+        </Wrapper>
+        <Wrapper id="about" title="about me">
+          <Profile />
+        </Wrapper>
+        {morePosts.length > 0 && (
+          <MoreStories allPosts={allPosts} posts={morePosts} hero="about" />
+        )}
+      </article>
+    </>
+  )
+}
+
+Index.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <>
+      <Layout>{page}</Layout>
     </>
   )
 }

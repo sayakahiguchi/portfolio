@@ -6,6 +6,7 @@ type WorkType = {
   image: string;
   description: string;
   categories: string[];
+  link?: string
 }
 
 export default WorkType

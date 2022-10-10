@@ -15,7 +15,10 @@ type Props = {
 const PostHeader = ({ title, coverImage, date, author }: Props) => {
   return (
     <div className={postHeaderStyle.wrapper}>
-      <PostTitle>{title} </PostTitle>
+      <div className={postHeaderStyle.content}>
+        <PostTitle>{title}</PostTitle>
+        <p>{date}</p>
+      </div>
       <CoverImage title={title} src={coverImage} />
     </div>
   )

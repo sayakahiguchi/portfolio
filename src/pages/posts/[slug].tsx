@@ -1,9 +1,8 @@
-import type { NextPage } from 'next'
-import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
+import type { NextPageWithLayout } from '../_app'
+import ErrorPage from 'next/error'
 import * as React from 'react'
 import { getPostBySlug, getAllPosts } from '@/common/lib/api'
-import { CMS_NAME } from '@/common/lib/constants'
 import markdownToHtml from '@/common/lib/markdownToHtml'
 import PostType from '@/common/types/post'
 import Layout from '@/components/Layouts'
@@ -11,22 +10,29 @@ import Header from '@/components/Layouts/Header'
 import Meta from '@/components/Layouts/Meta'
 import PostBody from '@/components/Layouts/PostBody'
 import PostHeader from '@/components/Layouts/PostHeader'
-import Wrapper from '@/components/Layouts/Wrapper'
 import PostTitle from '@/components/atoms/PostTitle'
+import MoreStories from '@/components/molecules/MoreStories'
 
 type Props = {
+  allPosts: PostType[]
   post: PostType
-  morePosts: PostType[]
-  preview?: boolean
+  preview: boolean
+  postIndex: number
 }
 
-const Post = ({ post, morePosts, preview }: Props) => {
+const Post: NextPageWithLayout<Props> = ({
+  allPosts,
+  post,
+  postIndex,
+  preview,
+}: Props) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
   return (
-    <Layout preview={preview}>
+    <>
+      <Meta />
       <Header />
       {router.isFallback ? (
         <PostTitle>Loading…</PostTitle>
@@ -42,8 +48,12 @@ const Post = ({ post, morePosts, preview }: Props) => {
           <PostBody content={post.content} />
         </article>
       )}
-    </Layout>
+    </>
   )
+}
+
+Post.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>
 }
 
 export default Post
@@ -55,6 +65,16 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
+  const allPosts = getAllPosts([
+    'title',
+    'date',
+    'slug',
+    'author',
+    'coverImage',
+    'excerpt',
+    'tags',
+  ])
+
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
@@ -64,10 +84,12 @@ export async function getStaticProps({ params }: Params) {
     'ogImage',
     'coverImage',
   ])
+
   const content = await markdownToHtml(post.content || '')
 
   return {
     props: {
+      allPosts,
       post: {
         ...post,
         content,

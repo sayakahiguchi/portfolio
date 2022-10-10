@@ -7,12 +7,10 @@ type Props = {
 
 const PostBody = ({ content }: Props) => {
   return (
-    <div className={postBodyStyle.wrapper}>
-      <div
-        className={markdownStyles['markdown']}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
-    </div>
+    <div
+      className={`${markdownStyles['markdown']} ${postBodyStyle.wrapper}`}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   )
 }
 

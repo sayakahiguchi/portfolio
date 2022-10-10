@@ -6,6 +6,7 @@ export type worksArray = {
   image: string
   description: React.ReactNode | JSX.Element
   categories: string[]
+  link?: string
 }[]
 
 export const works: worksArray = [
@@ -16,6 +17,7 @@ export const works: worksArray = [
     description:
       '<p>担当業務: デザイン、制作、運用保守</p><p>ロゴのオレンジを基調に、補色を用いた配色を使用。地域に密着した不動産業を全面に押し出したいことから、particle-jsで動きと繋がりをイメージできる背景にした。</p>',
     categories: ['1', '11', '12'],
+    link: 'https:https://fromeast000.jp'
   },
   {
     id: 2,
@@ -48,9 +50,19 @@ export const works: worksArray = [
     description:
       '<p>担当業務: デザイン、コーディング、ロゴデザイン</p><p>必要最低限のコンテンツと機能のみを希望。ジュエリーや時計等、高級な嗜好品を取り扱うため、色調と見出しフォントをシックな印象で統一した。</p>',
     categories: ['4'],
+    link: 'https://gt-asset-management.asia'
   },
   {
     id: 6,
+    title: 'アジアスーパー',
+    image: '/assets/works/asia-super.jpg',
+    description:
+      '<p>担当業務: カスタマイズ、店舗情報・商品・コレクション・タグ登録、決済システム導入、在庫管理システム・POS連携、スタッフへのサポート</p><p>食品・飲料、雑貨を販売する実店舗のECサイトをShopifyで構築。Shopify CLIで構築。スライダー、商品一覧の"カートに追加"ボタン、ポップアップ、問い合わせ機能を実装。</p>',
+    categories: ['4'],
+    link: 'https://www.asia-super.com/'
+  },
+  {
+    id: 7,
     title: '家もん',
     image: '/assets/works/iemon2_300x250.jpg',
     description:
@@ -58,15 +70,16 @@ export const works: worksArray = [
     categories: ['2'],
   },
   {
-    id: 7,
+    id: 8,
     title: 'SNSプロフィール画面 (Cocoda)',
     image: '/assets/works/cocodaUI1.jpg',
     description:
       '<p>Cocoda! UIカリキュラム#001 SNSのプロフィール画面</p><p>ペルソナ、コンセプト: プライベートも楽しむ働き盛りの26才女性。生活の中で撮る写真をオシャレに見せたい。</p><p>Neumorphismを使ったInstagram風の画像投稿メイン型SNS<br/>パステルやモノトーンなど、様々なユーザのテイストに合わせられるように明るくニュートラルなグレーで配色。フォローボタンのみをブルーにすることでハイライトさせる。<br/>保存した画像の表示ページを下の固定に設置。ネイルサロンやヘアサロンなどでの「こんな風にしてください」や、買い物中の「あれって何のブランド(商品名)だっけ?」が解決しやすくなり、ユーザの利用時間を増やせる。<br/>igは「縦(の画像)に弱い」ことが弱点とされていたので、19:6、4:3、1:1の画像をグリッドで表示できるフィードに。グリッドに合わないと感じたので、Pinterestのような角丸は使わず。</p><p><a href="https://xd.adobe.com/view/7fb5cbf0-8763-47e3-8356-e1e018d652c8-2ae6/">アニメーション(Adobe XD)</p>',
     categories: ['2'],
+    link: 'https://xd.adobe.com/view/7fb5cbf0-8763-47e3-8356-e1e018d652c8-2ae6/'
   },
   {
-    id: 8,
+    id: 9,
     title: 'マルシェイベントポスター (Cocoda)',
     image: '/assets/works/cocodaDaily03.jpeg',
     description:
@@ -74,7 +87,7 @@ export const works: worksArray = [
     categories: ['2'],
   },
   {
-    id: 9,
+    id: 10,
     title: 'LIPSキャンペーンバナー (Cocoda)',
     image: '/assets/works/cocodaDaily06.jpeg',
     description:
@@ -82,7 +95,7 @@ export const works: worksArray = [
     categories: ['2'],
   },
   {
-    id: 10,
+    id: 11,
     title: 'サイトロゴ (Cocoda)',
     image: '/assets/works/cocodaDaily08.jpeg',
     description:

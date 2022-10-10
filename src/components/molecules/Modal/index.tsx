@@ -32,19 +32,19 @@ export const Modal: React.FC<ModalProps> = memo(
             onClick={(e: React.MouseEvent) => e.stopPropagation()}
           >
             {children}
-          </div>
-          <div className={modalStyles.button}>
-            <Icon
-              element="button"
-              type="button"
-              svg
-              size="small"
-              src="/"
-              alt="close"
-              onClick={onClose}
-            >
-              <XIcon />
-            </Icon>
+            <div className={modalStyles.button}>
+              <Icon
+                element="button"
+                type="button"
+                svg
+                size="small"
+                src="/"
+                alt="close"
+                onClick={onClose}
+              >
+                <XIcon />
+              </Icon>
+            </div>
           </div>
         </div>
       )

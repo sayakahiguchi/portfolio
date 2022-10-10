@@ -1,6 +1,9 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { vars } from '@/styles/vars/var.css'
 
+globalStyle('html', {
+  scrollBehavior: 'smooth'
+})
 globalStyle('body', {
   margin: 0,
   fontFamily: vars.fonts.body,

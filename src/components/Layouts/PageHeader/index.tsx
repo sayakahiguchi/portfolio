@@ -9,7 +9,7 @@ interface Props {
 const PageHeader: React.FC<Props> = ({ pageTitle, pageImg }: Props) => {
   return (
     <>
-      <PostTitle>{pageTitle} </PostTitle>
+      <PostTitle>{pageTitle}</PostTitle>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes'
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState, useMemo, useCallback } from 'react'
 import Moon from '@/components/atoms/Icons/Moon'
 import Settings from '@/components/atoms/Icons/Settings'
 import Sun from '@/components/atoms/Icons/Sun'
@@ -15,7 +15,6 @@ const ThemesList: {
   { id: 2, name: 'light', icon: <Sun /> },
   { id: 3, name: 'dark', icon: <Moon /> },
 ]
-const ThemeNameList = ThemesList.map((theme) => theme.name)
 
 const ThemeChanger = () => {
   const [mounted, setMounted] = useState(false)
@@ -24,10 +23,11 @@ const ThemeChanger = () => {
   useEffect(() => {
     setMounted(true)
     let currentTheme = window.localStorage.getItem('theme')
+    console.log(theme)
     if (currentTheme != null) {
       setTheme(currentTheme)
     }
-  }, [setMounted, setTheme])
+  }, [setMounted])
 
   const currentTheme = useMemo(() => {
     let object
@@ -46,12 +46,15 @@ const ThemeChanger = () => {
     return 'theme'
   }, [theme])
 
-  const changeSetTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const element = e.target as HTMLInputElement
-    const newTheme = element.value
-    window.localStorage.setItem('theme', newTheme)
-    setTheme(newTheme)
-  }
+  const changeSetTheme = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const element = e.target as HTMLInputElement
+      const newTheme = element.value
+      window.localStorage.setItem('theme', newTheme)
+      setTheme(newTheme)
+    },
+    [setTheme]
+  )
 
   if (!mounted) return null
   return (
